@@ -45,7 +45,13 @@ type Launch {
     launch(id: ID!): Launch
     me: User
   }
-
+  
+  """
+  Simple wrapper around our list of launches that contains a cursor to the
+  last item in the list. Pass this cursor to the launches query to fetch results
+  after these.
+  """
+  
   type LaunchConnection { # add this below the Query type as an additional type.
     cursor: String!
     hasMore: Boolean!
@@ -63,7 +69,6 @@ type Launch {
     message: String
     launches: [Launch]
   }
-
 `;
 
 module.exports = typeDefs;
