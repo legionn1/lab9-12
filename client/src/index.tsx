@@ -14,10 +14,21 @@ const link = new HttpLink({
 });
 
 const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
-  cache,
-  link,
+    cache,
+    link: new HttpLink({
+      uri: 'http://localhost:4000/graphql',
+      headers: {
+        authorization: localStorage.getItem('token'),
+      }, 
+    }),
+  });
   
-});
+  cache.writeData({
+    data: {
+      isLoggedIn: !!localStorage.getItem('token'),
+      cartItems: [],
+    },
+  });
 
 injectStyles();
 ReactDOM.render(
