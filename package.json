@@ -28,7 +28,17 @@
     "isemail": "^3.1.3",
     "nodemon": "^1.18.4",
     "sequelize": "^4.39.0",
-    "sqlite3": "^4.0.3"
+    "sqlite3": "^4.0.3",
+    "@apollo/react-testing": "^3.1.4",
+    "@testing-library/jest-dom": "^4.0.0",
+    "@testing-library/react": "^8.0.7",
+    "@types/jest": "^24.0.23",
+    "apollo": "^2.16.3",
+    "apollo-link": "^1.2.3",
+    "artillery": "^1.6.0-26",
+    "nock": "^10.0.2",
+    "node-fetch": "^2.2.1",
+    "npm-watch": "^0.6.0"
   },
   "scripts": {
     "server": "cd server && npm start ",
@@ -45,16 +55,16 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@apollo/react-testing": "3.0.0",
+    "@apollo/react-testing": "^3.1.4",
     "@testing-library/jest-dom": "^4.0.0",
     "@testing-library/react": "^8.0.7",
     "@types/jest": "^24.0.23",
     "apollo": "^2.16.3",
-    "artillery": "^1.6.0-26",
-    "npm-watch": "^0.6.0",
     "apollo-link": "^1.2.3",
     "apollo-link-http": "^1.5.5",
+    "artillery": "^1.6.0-26",
     "nock": "^10.0.2",
-    "node-fetch": "^2.2.1"
+    "node-fetch": "^2.2.1",
+    "npm-watch": "^0.6.0"
   }
 }
