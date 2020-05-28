@@ -59,7 +59,7 @@ type Launch {
   }
 
   type Mutation {
-    bookTrips(launchIds: [ID]!): TripUpdateResponse!
+    bookTrips(launchIds: [ID], cardToken: String): TripUpdateResponse!
     cancelTrip(launchId: ID!): TripUpdateResponse!
     login(email: String): String # login token
   }
@@ -68,6 +68,7 @@ type Launch {
     success: Boolean!
     message: String
     launches: [Launch]
+    clientSecret: String
   }
 `;
 

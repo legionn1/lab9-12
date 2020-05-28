@@ -1,15 +1,14 @@
-import React from 'react';
-import styled from 'react-emotion';
-import { useApolloClient } from '@apollo/react-hooks';
+import React from "react";
+import styled from "react-emotion";
+import { useApolloClient } from "@apollo/react-hooks";
 
-import { menuItemClassName } from '../components/menu-item';
-import { ReactComponent as ExitIcon } from '../assets/icons/exit.svg';
+import { menuItemClassName } from "../components/menu-item";
+import { ReactComponent as ExitIcon } from "../assets/icons/exit.svg";
 
-const LogoutButton = () => {
+export default function LogoutButton() {
   const client = useApolloClient();
   return (
     <StyledButton
-      data-testid="logout-button"
       onClick={() => {
         client.writeData({ data: { isLoggedIn: false } });
         localStorage.clear();
@@ -21,14 +20,8 @@ const LogoutButton = () => {
   );
 }
 
-export default LogoutButton;
-
-/**
- * STYLED COMPONENTS USED IN THIS FILE ARE BELOW HERE
- */
-
-const StyledButton = styled('button')(menuItemClassName, {
-  background: 'none',
-  border: 'none',
-  padding: 0,
-});
+const StyledButton = styled("button")(menuItemClassName, {
+  background: "none",
+  border: "none",
+  padding: 0
+})

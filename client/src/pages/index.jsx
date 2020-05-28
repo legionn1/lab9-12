@@ -7,9 +7,13 @@ import Cart from './cart';
 import Profile from './profile';
 import { Footer, PageContainer } from '../components';
 
+import {Elements} from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
+const stripePromise = loadStripe("pk_test_W9joSZ2WvUG87p9KVEGf5fZc00KSA2lq4X");
 export default function Pages() {
   return (
     <Fragment>
+      <Elements stripe={stripePromise}>
       <PageContainer>
         <Router primary={false} component={Fragment}>
           <Launches path="/" />
@@ -19,6 +23,7 @@ export default function Pages() {
         </Router>
       </PageContainer>
       <Footer />
+      </Elements>
     </Fragment>
   );
 }

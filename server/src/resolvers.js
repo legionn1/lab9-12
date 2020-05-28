@@ -58,21 +58,32 @@ module.exports = {
 
   Mutation: {
     
-    bookTrips: async (_, { launchIds }, { dataSources }) => {
-      const results = await dataSources.userAPI.bookTrips({ launchIds });
-      const launches = await dataSources.launchAPI.getLaunchesByIds({
-        launchIds,
+    bookTrips: async (_, { launchIds,cardToken }, { dataSources }) => {
+        const results = await dataSources.userAPI.bookTrips({ launchIds });
+        const launches = await dataSources.launchAPI.getLaunchesByIds({
+          launchIds,
+        });
+      const stripe = require('stripe')('sk_test_giEE4j8o18RDfWlsvYnv54iq0089bwDLpr');
+
+      const paymentIntent = await stripe.paymentIntents.create({
+        amount: 1000 * launchIds.length + 1,
+        currency: "usd",
+        // Verify your integration in this guide by including this parameter
+        metadata: { integration_check: "accept_a_payment" },
       });
-  
+
+      const clientSecret = paymentIntent.client_secret;
+      console.log(paymentIntent);
       return {
         success: results && results.length === launchIds.length,
         message:
           results.length === launchIds.length
-            ? 'trips booked successfully'
+            ? "trips booked successfully"
             : `the following launches couldn't be booked: ${launchIds.filter(
-                id => !results.includes(id),
+                (id) => !results.includes(id)
               )}`,
         launches,
+        clientSecret,
       };
     },
     cancelTrip: async (_, { launchId }, { dataSources }) => {

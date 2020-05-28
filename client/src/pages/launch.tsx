@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { useQuery } from '@apollo/react-hooks';
-import gql from 'graphql-tag'; 
+import gql from 'graphql-tag';
 
 import { LAUNCH_TILE_DATA } from './launches';
 import { Loading, Header, LaunchDetail } from '../components';
